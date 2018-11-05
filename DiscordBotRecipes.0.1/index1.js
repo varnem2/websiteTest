@@ -9,17 +9,39 @@ const headder = '--------------------------------------------------------';
 
 //everything else
 var request = require('request');
+var schedule = require('node-schedule');
 const repo = 'https://github.com/varnem2/effective-pancake.git';
 var dir = __dirname + '/effective-pancake/';
 const fs = require('fs');
-var fileName = fs.readdirSync(dir);
+
+var onceADay = '0 0 0 6 * *';
+var every30Seconds = '30 * * * * *';
+var j = schedule.scheduleJob(every30Seconds, function(){
+    pullGitHub.then(makePostToday);
+});
+
+//var fileName = fs.readdirSync(dir);
 
 
 let pullGitHub = new Promise((resolve, reject) => {
     const simpleGit = require('simple-git')().init().clone(repo);
 });
 
-let makePostToday = new Promise((resolve, reject) => {
+let makePostToday = new Promise((resolve,reject) => {
+    
+    request.post(url).form({
+        avatar_url: avatar_url,
+        username, name,
+        content: fs.readFileSync(dir + fileName, function(err){
+            if(err){
+                throw err;
+            }
+        }).toString('utf8')
+    })
+    
+})
+
+let makePostTomorrow = new Promise((resolve, reject) => {
     
     try{
         request.post(url).form({
@@ -40,16 +62,16 @@ let makePostToday = new Promise((resolve, reject) => {
                 headder + noPrep + headder
         })
     }
-    
-    
-
 });
 
 let deleteLocalFile = new Promise((resolve, reject) => {
-    
+    fs.unlink(dir + fileName[0], function(err){
+        if(err){
+            console.log("Error on unlink");
+            throw err;
+        }
+        console.log('File deleted: ' + fileName[0]);
+    })
 })
 
-let makePostTomorrow = new Promise((resolve, reject) => {
-    var fileName = fs.readdirSync(dir)[0];
-    
-})
+
