@@ -13,7 +13,7 @@ const headder = '---------------------------------------------------------------
 
 var onceADay = '0 0 0 6 * *';
 var every30Seconds = '30 * * * * *';
-var j = schedule.scheduleJob(every30Seconds, function(){
+var j = schedule.scheduleJob(onceADay, function(){
     var fileNameArr = fs.readdirSync(dir);
     var fileName = fileNameArr[1];
 
