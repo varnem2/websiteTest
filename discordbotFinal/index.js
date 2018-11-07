@@ -36,7 +36,7 @@ var j = schedule.scheduleJob(every30Seconds, function(){
     console.log(fileName);
     
     request.post(url).form({
-        avatar_url: avatar_url, 
+        avatar_url: avatar_url,  
         username: name,
         content: fs.readFileSync(dir + fileName, function(err){
             if(err){
