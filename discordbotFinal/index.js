@@ -10,38 +10,11 @@ const noPrep = 'Tomorrow\'s meal isn\'t prepped yet!';
 const prep = 'Tomorrow\'s meal is ';
 const headder = '----------------------------------------------------------------';
 
-
-function sleep(delay){
-    var start = new Date().getTime();
-    while(new Date().getTime() < start + delay);
-}
-console.log(new Date().getSeconds());
-sleep(10);
-console.log(new Date().getMilliseconds());
-
-var fourpm = '0 0 40 3 * *';
-var every30Seconds = '30 * * * * *';
-
-var rule = new schedule.RecurrenceRule();
-//rule.minute = 54;
-rule.second = [0, 10, 20, 30, 40, 50]
-rule.dayOfWeek = new schedule.Range(0,6);
-
-console.log("Start scheule");
-var j = schedule.scheduleJob(rule, function(){
-    console.log("Testing123");
-
-    var currentDate = new Date();
-    console.log("Hour = " + currentDate.getHours());
-    console.log("Minute = " + currentDate.getMinutes());
-    console.log("Second = " + currentDate.getSeconds());
-    console.log("");
-});
-
-
-//var onceADay = '0 0 0 6 * *';
-//var every30Seconds = '30 * * * * *';
-//var j = schedule.scheduleJob(every30Seconds, function(){
+var every10Seconds = new schedule.RecurrenceRule();
+every10Seconds.second = [0, 10, 20, 30, 40, 50];
+var fourpm = new schedule.RecurrenceRule();
+fourpm.hour = 5;
+var j = schedule.scheduleJob(every10Seconds, function(){
     var fileNameArr = fs.readdirSync(dir);
     var fileName = fileNameArr[1];
 
@@ -81,6 +54,6 @@ var j = schedule.scheduleJob(rule, function(){
         }
         console.log('File deleted: ' + fileName);
     });
-//});
+});
 
 
