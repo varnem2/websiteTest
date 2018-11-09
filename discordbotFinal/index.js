@@ -14,7 +14,7 @@ var every10Seconds = new schedule.RecurrenceRule();
 every10Seconds.second = [0, 10, 20, 30, 40, 50];
 var fourpm = new schedule.RecurrenceRule();
 fourpm.hour = 6;
-var j = schedule.scheduleJob(every10Seconds, function(){
+var j = schedule.scheduleJob(fourpm, function(){
     var fileNameArr = fs.readdirSync(dir);
     var fileName = fileNameArr[1];
 
