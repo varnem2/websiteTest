@@ -30,7 +30,12 @@ rule.dayOfWeek = new schedule.Range(0,6);
 console.log("Start scheule");
 var j = schedule.scheduleJob(rule, function(){
     console.log("Testing123");
-    console.log(new Date().getTime());
+
+    var currentDate = new Date();
+    console.log("Hour = " + currentDate.getHours());
+    console.log("Minute = " + currentDate.getMinutes());
+    console.log("Second = " + currentDate.getSeconds());
+    console.log("");
 });
 
 
