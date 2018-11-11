@@ -1,8 +1,8 @@
 var request = require('request');
 var schedule = require('node-schedule');
 const fs = require('fs');
-//const url = require("./Token.json").token;
-const url = 'https://discordapp.com/api/webhooks/510572950840410132/J8Z0kCsB9-4fhecNOK_eBi7QQHpkmMcdH97wgZ30RQzHIDiik9qQCPuWxOr0mx4RGT1I'
+const url = require("./Token.json").token;
+//const url = 'https://discordapp.com/api/webhooks/510572950840410132/J8Z0kCsB9-4fhecNOK_eBi7QQHpkmMcdH97wgZ30RQzHIDiik9qQCPuWxOr0mx4RGT1I'
 const avatar_url = 'https://ih0.redbubble.net/image.436363942.7705/mp,550x550,matte,ffffff,t.3.jpg';
 const name = "Recipie Bot";
 //var dir = 'C:/Users/dash/Documents/10SFG Recipies/';
@@ -17,7 +17,7 @@ var fourpm = new schedule.RecurrenceRule();
 fourpm.hour = 7;
 fourpm.minute = 0;
 fourpm.second = 0;
-var j = schedule.scheduleJob(fourpm, function(){
+var j = schedule.scheduleJob(every10Seconds, function(){
     var fileNameArr = fs.readdirSync(dir);
     var fileName = fileNameArr[1];
 
