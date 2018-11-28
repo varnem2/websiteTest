@@ -1,3 +1,7 @@
+function dfac(){
+
+
+
 var request = require('request');
 var schedule = require('node-schedule');
 const fs = require('fs');
@@ -60,3 +64,7 @@ var j = schedule.scheduleJob(fourpm, function(){
 });
 
 
+}
+
+
+module.exports = dfac;
