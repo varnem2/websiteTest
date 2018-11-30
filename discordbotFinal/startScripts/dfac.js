@@ -1,3 +1,8 @@
 var dfac = require('../dfac');
 
-dfac();
+
+
+//console.log(process.argv.includes("--debug"));
+
+//assume debug
+dfac(process.argv.includes("--debug"));

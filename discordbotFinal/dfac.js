@@ -1,4 +1,4 @@
-function dfac(){
+function dfac(debug){
 
 
 
@@ -21,7 +21,7 @@ var fourpm = new schedule.RecurrenceRule();
 fourpm.hour = 7;
 fourpm.minute = 0;
 fourpm.second = 0;
-var j = schedule.scheduleJob(fourpm, function(){
+var j = schedule.scheduleJob((debug? every10Seconds : fourpm), function(){
     var fileNameArr = fs.readdirSync(dir);
     var fileName = fileNameArr[1];
 
