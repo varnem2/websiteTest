@@ -5,6 +5,7 @@ function discordBot(token){
     const client = new Commando.Client();
     
     client.registry.registerGroup('simple','Simple');
+    client.registry.registerGroup('server','Server');
     client.registry.registerDefaults();
     client.registry.registerCommandsIn(__dirname + '/commands');
 
